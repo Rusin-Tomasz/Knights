@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="init-window">
+        <form action="">
+            <div class="p1-options">
+                <label>Podaj nazwę 1 gracza:
+                    <input class="player-name-input" type="text">
+                </label>
+                <p>Wybiersz rase:</p>
+                <input type="radio" id="p1-human" name="race-p1" value="human">
+                <label class="human" for="p1-human">Human</label>
+                <input type="radio" id="p1-undead" name="race-p1" value="undead">
+                <label class="undead" for="p1-undead">Undead</label>
+            </div>
+            <div class="p2-options">
+                <label>Podaj nazwę 2 gracza:
+                    <input class="player-name-input" type="text">
+                </label>
+                <p>Wybiersz rase:</p>
+                <input type="radio" id="p2-human" name="race-p2" value="human">
+                <label class="human" for="p2-human">Human</label>
+                <input type="radio" id="p2-undead" name="race-p2" value="undead">
+                <label class="undead" for="p2-undead">Undead</label>
+            </div>
+            <div class="map-size-options">
+            <p>Wybierz rozmiar mapy:</p>
+            <input type="radio" id="4x4" name="map" value="4">
+            <label for="4x4">4x4</label>
+            <input type="radio" id="5x5" name="map" value="5">
+            <label for="5x5">5x5</label>
+            <input type="radio" id="6x6" name="map" value="6">
+            <label for="6x6">6x6</label>
+            <input type="radio" id="7x7" name="map" value="7">
+            <label for="7x7">7x7</label>
+            </div>
+            <input class="start-game" type="submit" value="Zaczynajmy!">
+        </form>
+    </div>
+    <div class="container">
+        <div class="player player-1">
+            <div class="name-wrapper">
+                <div class="p-1-avatar"></div>
+                <p class="player-name"></p>
+            </div>
+            <div class="cards-wrapper p1-cards">
+            </div>
+        </div>
+        <div class="map">
+        </div>
+        <div class="player player-2">
+            <div class="name-wrapper">
+                <div class="p-2-avatar"></div>
+                <p class="player-name"></p>
+            </div>
+            <div class="cards-wrapper p2-cards">
+            </div>
+            <button class='next-turn'>Next Turn</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

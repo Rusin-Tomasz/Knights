@@ -1,0 +1,335 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)), url("../img/knight.png");
+}
+
+input[name="race-p1"], input[name="race-p2"] {
+    display:  none;
+}
+
+label {
+    cursor: pointer;
+}
+
+.human, .undead {
+    display: inline-block;
+    border: 2px solid black;
+    height: 200px;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.human:hover, .undead:hover {
+    background-color:rgb(114, 85, 241);
+}
+
+.undead {
+    background-image: url("../icons/undead/GrimReaperBlack.svg");
+    background-color:rgb(248, 248, 248);
+    background-size: 70%;
+}
+
+.human {
+    background-image: url("../icons/human/anime.svg");
+    background-color:rgb(248, 248, 248);
+    background-size: 50%;
+}
+
+#p2-undead:checked + label,
+#p1-undead:checked + label {
+    background-image: url("../icons/undead/reaper.svg");
+    background-color:rgb(114, 85, 241);
+}
+
+#p2-human:checked + label,
+#p1-human:checked + label {
+    background-image: url("../icons/human/knight.svg");
+    background-color:rgb(114, 85, 241);
+    background-size: 40%;
+}
+
+
+.init-window {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.init-window form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.p1-options, 
+.p2-options {
+    width: 50%;
+}
+.map-size-options {
+    width: 100%;
+}
+
+.start-game {
+    display: block;
+    margin-top: 20px;
+}
+
+.container {
+    height: 100vh;
+    /* background-color: rgb(25, 14, 51); */
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.player {
+    height: 10%;
+    background: linear-gradient(rgba(38, 43, 53, 0.9),rgba(10, 3, 9, 0.3));
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+}
+
+.active {
+    background: linear-gradient(to left, rgba(61, 11, 68, 0.829),rgba(184, 204, 95, 0.575));
+}
+
+.name-wrapper {
+    width: 10%;
+    position: relative;
+}
+
+.map {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.map-field {
+    margin: 0.5%;
+    height: 14%;
+    background: rgba(51, 25, 167, 0.7);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+
+.cards-wrapper  {
+    display: flex;
+    height: 100%;
+}
+
+.card {
+    /* width: 15%;
+    height: calc(100% - 10px); */
+    width: 130px;
+    height: 90%;
+    border: 2px solid black;
+    margin: 5px;
+    position: relative;  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.map-field .card {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+}
+
+.card-P1 {
+    background-color: yellow;
+}
+
+.undead-card-P1 {
+    background-color: rgba(30, 32, 143, 0.822);
+}
+
+.undead-card-P1:hover {
+    background-color: rgba(57, 60, 246, 0.822);
+}
+
+.undead-card-P1 span {
+    background-color: rgba(79, 29, 218, 0.822);
+}
+
+.human-card-P1 {
+    background-color: rgb(194, 191, 18);
+}
+
+.human-card-P1 span {
+    background-color: rgba(24, 150, 76, 0.822);
+}
+
+.human-card-P1:hover {
+    background-color: rgba(230, 255, 8, 0.822);
+}
+
+.card-P2 {
+    background-color: rgb(61, 126, 231);
+}
+
+.undead-card-P2 {
+    background-color: rgba(158, 31, 147, 0.822);
+}
+
+.undead-card-P2:hover {
+    background-color: rgba(0, 140, 255, 0.822);
+}
+
+.undead-card-P2 span {
+    background-color: rgba(158, 31, 147, 0.822);
+}
+
+.human-card-P2 {
+    background-color: rgb(36, 163, 157);
+}
+
+.human-card-P2:hover {
+    background-color: rgba(11, 206, 255, 0.822);
+}
+
+.human-card-P2 span {   
+    background-color: rgba(0, 140, 255, 0.822);
+}
+
+
+.card span {
+    position: absolute;
+    user-select:none;
+    width: 20px;
+    height: 20px;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+}
+
+
+.card span:nth-child(1) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card span:nth-child(2) {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+.card span:nth-child(3) {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card span:nth-child(4) {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.next-turn {
+   position: absolute;
+   right: 1%;
+   top: 50%;
+   transform: translateY(-50%);
+}
+
+.hold {
+    border: solid #ccc 4px;
+}
+
+.invisible {
+    display: none;
+}
+
+.hovered {
+    background: #f4f4f4;
+    border-style: dashed;
+}
+
+.allow-drop-1 {
+    background-color: lightseagreen;
+}
+
+
+.allow-drop-2 {
+    background-color: lightcoral;
+}
+
+
+/* Ikony kart */
+
+.reaper {
+    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/reaper.svg");
+}
+
+.brain-zombie {
+    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(100, 18, 80, 0.3)),url("../icons/undead/brain-zombie.svg");
+}
+
+.crypt-archer {
+    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/Crypt-Archer.svg");
+}
+
+.grim-reaper {
+    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/Grim_Reaper.svg");
+}
+
+.grim-reaper-red {
+    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)), url("../icons/undead/grim-reaper.svg");
+}
+
+.witch {
+    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/Witch.svg");
+}
+
+.henry {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/henry.svg");
+}
+
+.cleric {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/kleryk.svg");
+}
+
+.knight {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/knight.svg");
+}
+
+.mermai {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/mermai.svg");
+}
+
+.ranger {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/Ranger-Armor.svg");
+}
+
+.space-police {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/spacePolice.svg");
+}
+
+.sword {
+    background-image: linear-gradient(rgba(82, 92, 235, 0.3),rgba(47, 16, 41, 0.6)),url("../icons/human/sword.svg");
+}
