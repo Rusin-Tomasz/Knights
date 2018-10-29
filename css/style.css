@@ -131,12 +131,29 @@ label {
     position: relative;
 }
 
-
 .cards-wrapper  {
     display: flex;
     height: 100%;
 }
 
+.cards-holder {
+    position: relative;
+    width: 150px;
+    margin-left: 2rem;
+}
+
+.cards-holder .card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.mask-card-holder {
+    height: 100%;
+    background: green;
+    width: 100%;
+}
 .card {
     /* width: 15%;
     height: calc(100% - 10px); */
@@ -217,7 +234,6 @@ label {
     background-color: rgba(0, 140, 255, 0.822);
 }
 
-
 .card span {
     position: absolute;
     user-select:none;
@@ -227,7 +243,6 @@ label {
     border-radius: 50%;
     text-align: center;
 }
-
 
 .card span:nth-child(1) {
     top: 0;

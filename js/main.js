@@ -1,5 +1,5 @@
 let rowSize;
-let cartLimit = 5;
+
 document.querySelector('.start-game').addEventListener('click', (e) => {
     e.preventDefault();
     document.querySelector('.init-window').classList.add('invisible');
@@ -7,6 +7,7 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
     let secondPlayer = 1;
     let playersName = document.getElementsByClassName('player-name-input');
     let radios = document.getElementsByName('map');
+    let turnRadio = parseInt(document.querySelector('.turn-limit-input').value);
     let mapFieldArr = [];
     let cartsArrP1 = [];
     let cartsArrP2 = [];
@@ -17,6 +18,8 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
     let currentEast;
     let currentSouth;
     let currentWest;
+    let turnCounter = 0;
+    let turnLimit = turnRadio;
 
     [...playersName].forEach((element, index) => {
         let playersNameField = document.getElementsByClassName('player-name');
@@ -31,7 +34,9 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
         }
     };
 
-    for (let i = 0; i < cartLimit; i++) {
+
+
+    for (let i = 0; i < turnLimit; i++) {
         let numberArr = [];
         for (let i = 0; i < 8; i++) {
             let rndNumber = Math.floor((Math.random() * 10) + 1);
@@ -101,7 +106,14 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
                         cart.appendChild(cartValue);
                     }
                 }
-                document.querySelector(`.p${i+1}-cards`).appendChild(cart);
+
+                if(document.querySelector(`.p${i+1}-cards`).childNodes.length <= 4) {
+                    document.querySelector(`.p${i+1}-cards`).appendChild(cart);
+                } else {
+                    document.querySelector(`.p${i+1}-cards-holder`).appendChild(cart);
+                }
+                
+                
             }
         }
 
@@ -221,7 +233,6 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
         dragEl.setAttribute('draggable', 'false');
   
         for (const fields of mapFieldArr) {
-
             function setCordinate(cardArr) {
                 for (const carts of cardArr) {
                     if (fields.content.firstChild == carts.content) {
@@ -320,7 +331,6 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
                     let elem = currentContent.firstChild
                     let pos = 0;
                     let interval = setInterval(frame, 10);
-
                     function frame() {
                         if (pos == 50) {
                             clearInterval(interval);
@@ -462,19 +472,41 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
             secondPlayer = 1;
             SetDraggablePlayer(cartsArrP1, 'false');
             SetDraggablePlayer(cartsArrP2, 'true');
+            if(document.querySelector('.p2-cards-holder').children.length > 1) {
+                document.querySelector('.p2-cards').appendChild (
+                    document.querySelector('.p2-cards-holder').lastChild                 
+                );
+            }
         } else {
             activePlayer = 1;
             secondPlayer = 2;
             SetDraggablePlayer(cartsArrP1, 'true');
             SetDraggablePlayer(cartsArrP2, 'false');
+            if(document.querySelector('.p2-cards-holder').children.length > 1) {
+                document.querySelector('.p1-cards').appendChild (
+                    document.querySelector('.p1-cards-holder').lastChild
+                );
+            }
         }
         document.querySelector(`.player-${activePlayer}`).classList.add('active');
         document.querySelector(`.player-${secondPlayer}`).classList.remove('active');
     }
     document.querySelector('.next-turn').addEventListener('click', () => {
-        endOfTurn();
+        if(turnCounter < (turnLimit * 2 - 1)) {
+            turnCounter ++;
+            console.log(turnCounter);
+            console.log(turnLimit);
+            endOfTurn();    
+        } else {
+            if( document.querySelectorAll(`.card-P2`).length > document.querySelectorAll(`.card-P1`).length) {
+                console.log("Player 2 Win");
+            }else if (document.querySelectorAll(`.card-P2`).length == document.querySelectorAll(`.card-P1`).length) {
+                console.log("Remis");
+            }else {
+                console.log("Player 1 Win");
+            }
+        } 
     });
     // init();
     endOfTurn();
-
 });

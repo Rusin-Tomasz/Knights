@@ -33,15 +33,20 @@
                 <label class="undead" for="p2-undead">Undead</label>
             </div>
             <div class="map-size-options">
-            <p>Wybierz rozmiar mapy:</p>
-            <input type="radio" id="4x4" name="map" value="4">
-            <label for="4x4">4x4</label>
-            <input type="radio" id="5x5" name="map" value="5">
-            <label for="5x5">5x5</label>
-            <input type="radio" id="6x6" name="map" value="6">
-            <label for="6x6">6x6</label>
-            <input type="radio" id="7x7" name="map" value="7">
-            <label for="7x7">7x7</label>
+                <p>Wybierz rozmiar mapy:</p>
+                <input type="radio" id="4x4" name="map" value="4">
+                <label for="4x4">4x4</label>
+                <input type="radio" id="5x5" name="map" value="5">
+                <label for="5x5">5x5</label>
+                <input type="radio" id="6x6" name="map" value="6">
+                <label for="6x6">6x6</label>
+                <input type="radio" id="7x7" name="map" value="7">
+                <label for="7x7">7x7</label>
+            </div>
+            <div class="tour-limit">
+                <label>Wprowadź limit tur:
+                    <input class="turn-limit-input" type="number">
+                </label>
             </div>
             <input class="start-game" type="submit" value="Zaczynajmy!">
         </form>
@@ -54,6 +59,9 @@
             </div>
             <div class="cards-wrapper p1-cards">
             </div>
+            <div class="p1-cards-holder cards-holder">
+                <div class="mask-card-holder"></div>
+            </div>
         </div>
         <div class="map">
         </div>
@@ -63,6 +71,9 @@
                 <p class="player-name"></p>
             </div>
             <div class="cards-wrapper p2-cards">
+            </div>
+            <div class="p2-cards-holder cards-holder">
+                <div class="mask-card-holder"></div>
             </div>
             <button class='next-turn'>Next Turn</button>
         </div>
