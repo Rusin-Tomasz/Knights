@@ -294,6 +294,37 @@ label {
     background-color: lightcoral;
 }
 
+.info-box {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.info-box .counter {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+
+.end-game-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    opacity: 0;
+    transition: opacity 2s;
+}
 
 /* Ikony kart */
 

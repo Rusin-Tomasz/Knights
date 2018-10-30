@@ -20,6 +20,10 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
     let currentWest;
     let turnCounter = 0;
     let turnLimit = turnRadio;
+    let counter = turnLimit * 2 - 1;
+
+
+    document.querySelector('.counter').innerHTML = counter;
 
     [...playersName].forEach((element, index) => {
         let playersNameField = document.getElementsByClassName('player-name');
@@ -34,15 +38,12 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
         }
     };
 
-
-
     for (let i = 0; i < turnLimit; i++) {
         let numberArr = [];
         for (let i = 0; i < 8; i++) {
             let rndNumber = Math.floor((Math.random() * 10) + 1);
             numberArr.push(rndNumber);
         }
-
 
         // Rozdzielić na dwa typy a potem z tablicy pobrać karte
         function setCardType() {
@@ -494,16 +495,27 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
     document.querySelector('.next-turn').addEventListener('click', () => {
         if(turnCounter < (turnLimit * 2 - 1)) {
             turnCounter ++;
-            console.log(turnCounter);
-            console.log(turnLimit);
+            counter --;
+            document.querySelector('.counter').innerHTML = counter;
             endOfTurn();    
         } else {
             if( document.querySelectorAll(`.card-P2`).length > document.querySelectorAll(`.card-P1`).length) {
-                console.log("Player 2 Win");
+                let playerName = document.querySelector('.p2-name').innerHTML;
+                document.querySelector(".player-win").innerHTML = `Gracz ${playerName} Wygrał`;
+                document.querySelector(".end-game-info").style.height = 100 + 'vh';
+                document.querySelector(".end-game-info").style.opacity = 1;
+                document.querySelector(".container").style.filter = 'blur(2rem)';
             }else if (document.querySelectorAll(`.card-P2`).length == document.querySelectorAll(`.card-P1`).length) {
-                console.log("Remis");
+                document.querySelector(".player-win").innerHTML = `Remis, zapraszam do ponownej rozgrywki.`;
+                document.querySelector(".end-game-info").style.height = 100 + 'vh';
+                document.querySelector(".end-game-info").style.opacity = 1;
+                document.querySelector(".container").style.filter = 'blur(2rem)';
             }else {
-                console.log("Player 1 Win");
+            let playerName = document.querySelector('.p1-name').innerHTML;
+                document.querySelector(".player-win").innerHTML = `Gracz ${playerName} Wygrał`;
+                document.querySelector(".end-game-info").style.height = 100 + 'vh';
+                document.querySelector(".end-game-info").style.opacity = 1;
+                document.querySelector(".container").style.filter = 'blur(2rem)';
             }
         } 
     });
