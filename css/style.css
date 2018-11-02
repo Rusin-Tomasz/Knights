@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.9)), url("../img/knight.png");
+    background-image: linear-gradient(rgba(242, 228, 220, 0.1),rgba(242, 228, 220, 0.1)), url("../img/samuel-zeller-722382-unsplash.jpg");
 }
 
 input[name="race-p1"], input[name="race-p2"] {
@@ -89,22 +89,47 @@ label {
     /* background-color: rgb(25, 14, 51); */
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
     margin: auto;
+    justify-content: center;
 }
 
 .player {
     height: 10%;
-    background: linear-gradient(rgba(38, 43, 53, 0.9),rgba(10, 3, 9, 0.3));
+    border: 2px solid #000;
+    background: #736656;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     margin: auto;
+    opacity: 0.5;
 }
 
+.cards-wrapper  {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+.card {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    margin: 5px;
+    position: relative;  
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    position: relative;
+    border-radius: 50%;
+}
+
+
 .active {
-    background: linear-gradient(to left, rgba(61, 11, 68, 0.829),rgba(184, 204, 95, 0.575));
+    background: #732222;
+    opacity: 1;
 }
 
 .name-wrapper {
@@ -115,6 +140,7 @@ label {
 .map {
     height: 80%;
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -125,16 +151,15 @@ label {
 .map-field {
     margin: 0.5%;
     height: 14%;
-    background: rgba(51, 25, 167, 0.7);
+    background: url("../img/gray-1468994_640.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.cards-wrapper  {
-    display: flex;
-    height: 100%;
-}
 
 .cards-holder {
     position: relative;
@@ -151,21 +176,11 @@ label {
 
 .mask-card-holder {
     height: 100%;
-    background: green;
-    width: 100%;
-}
-.card {
-    /* width: 15%;
-    height: calc(100% - 10px); */
-    width: 130px;
-    height: 90%;
-    border: 2px solid black;
-    margin: 5px;
-    position: relative;  
-    background-repeat: no-repeat;
+    background: url("../img/card.jpeg");
     background-size: cover;
-    background-position: top;
-    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
 }
 
 .card:hover {
@@ -179,15 +194,15 @@ label {
 }
 
 .card-P1 {
-    background-color: yellow;
+    background-color: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3));
 }
 
 .undead-card-P1 {
-    background-color: rgba(30, 32, 143, 0.822);
+    background-color: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3));
 }
 
 .undead-card-P1:hover {
-    background-color: rgba(57, 60, 246, 0.822);
+    background-color: rgba(230, 255, 8, 0.822);
 }
 
 .undead-card-P1 span {
@@ -195,11 +210,11 @@ label {
 }
 
 .human-card-P1 {
-    background-color: rgb(194, 191, 18);
+    background-color: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3));
 }
 
 .human-card-P1 span {
-    background-color: rgba(24, 150, 76, 0.822);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .human-card-P1:hover {
@@ -207,15 +222,15 @@ label {
 }
 
 .card-P2 {
-    background-color: rgb(61, 126, 231);
+    background-color: rgba(255, 69, 69, 0.64);
 }
 
 .undead-card-P2 {
-    background-color: rgba(158, 31, 147, 0.822);
+    background-color: rgba(92, 225, 255, 0.68);
 }
 
 .undead-card-P2:hover {
-    background-color: rgba(0, 140, 255, 0.822);
+    background-color: rgba(255, 69, 69, 0.64);
 }
 
 .undead-card-P2 span {
@@ -223,7 +238,7 @@ label {
 }
 
 .human-card-P2 {
-    background-color: rgb(36, 163, 157);
+    background-color: rgba(255, 69, 69, 0.64);
 }
 
 .human-card-P2:hover {
@@ -237,11 +252,12 @@ label {
 .card span {
     position: absolute;
     user-select:none;
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     color: white;
     border-radius: 50%;
     text-align: center;
+    font-size: 12px;
 }
 
 .card span:nth-child(1) {
@@ -286,12 +302,18 @@ label {
 }
 
 .allow-drop-1 {
-    background-color: lightseagreen;
+    background: rgba(206, 34, 171, 0.4);
 }
 
-
 .allow-drop-2 {
-    background-color: lightcoral;
+    background: rgba(255, 69, 69, 0.4);
+}
+
+.allow-drop-1.hovered {
+    background: rgba(206, 34, 171, 0.8);
+}
+.allow-drop-2.hovered {
+    background: rgba(255, 69, 69, 0.84);
 }
 
 .info-box {
@@ -329,27 +351,27 @@ label {
 /* Ikony kart */
 
 .reaper {
-    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/reaper.svg");
+    background-image: linear-gradient(rgba(5, 10, 20, 0.7),rgba(73, 7, 62, 0.3)),url("../icons/undead/reaper.svg");
 }
 
 .brain-zombie {
-    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(100, 18, 80, 0.3)),url("../icons/undead/brain-zombie.svg");
+    background-image: linear-gradient(rgba(5, 10, 20, 0.7),rgba(100, 18, 80, 0.3)),url("../icons/undead/brain-zombie.svg");
 }
 
 .crypt-archer {
-    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/Crypt-Archer.svg");
+    background-image: linear-gradient(rgba(5, 10, 20, 0.7),rgba(73, 7, 62, 0.3)),url("../icons/undead/Crypt-Archer.svg");
 }
 
 .grim-reaper {
-    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/Grim_Reaper.svg");
+    background-image: linear-gradient(rgba(5, 10, 20, 0.7),rgba(73, 7, 62, 0.3)),url("../icons/undead/Grim_Reaper.svg");
 }
 
 .grim-reaper-red {
-    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)), url("../icons/undead/grim-reaper.svg");
+    background-image: linear-gradient(rgba(5, 10, 20, 0.7),rgba(73, 7, 62, 0.3)), url("../icons/undead/grim-reaper.svg");
 }
 
 .witch {
-    background-image: linear-gradient(rgba(5, 10, 20, 0.9),rgba(73, 7, 62, 0.3)),url("../icons/undead/Witch.svg");
+    background-image: linear-gradient(rgba(5, 10, 20, 0.7),rgba(73, 7, 62, 0.3)),url("../icons/undead/Witch.svg");
 }
 
 .henry {

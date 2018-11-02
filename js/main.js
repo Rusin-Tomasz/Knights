@@ -21,7 +21,14 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
     let turnCounter = 0;
     let turnLimit = turnRadio;
     let counter = turnLimit * 2 - 1;
-
+    let viewPort;
+    let viewportHeight = Math.max(document.documentElement.clientHeight);
+    let viewportWidth = Math.max(document.documentElement.clientWidth);
+    if(viewportWidth >= viewportHeight) {
+        viewPort = 1;
+    }else {
+        viewPort = 2;
+    }
 
     document.querySelector('.counter').innerHTML = counter;
 
@@ -145,14 +152,12 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
     };
 
     function mapObj() {
+        let currentHeight;
         for (let i = 0; i < rowSize; i++) {
             for (let j = 0; j < rowSize; j++) {
                 let mapObj = {};
                 let mapField = document.createElement('div');
                 mapField.classList.add('map-field');
-                mapField.style.height = `${86/rowSize}%`
-                mapField.style.width = mapField.style.height;
-                mapField.style.margin = `${2/rowSize}%`;
                 document.querySelector('.map').appendChild(mapField);
                 mapObj.content = mapField;
                 if (i == 0) {
@@ -163,10 +168,36 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
                 mapObj.row = i + 1;
                 mapObj.col = j + 1;
                 mapFieldArr.push(mapObj);
+                if(viewPort == 1) {
+                    mapField.style.height = `${(100 - (2/rowSize * 2*rowSize))/rowSize}%`;
+                    console.log(mapField.style.height);
+                    mapField.style.margin = `${2/rowSize}%`;
+                    currentHeight = window.getComputedStyle(mapField).height;
+                    mapField.style.width = currentHeight;
+                } else  {
+                    mapField.style.width = `${(100 - (2/rowSize * 2*rowSize))/rowSize}%`;
+                    mapField.style.margin = `${2/rowSize}%`;
+                    currentHeight = window.getComputedStyle(mapField).width;
+                    mapField.style.height = currentHeight;
+                }
             };
         };
+        setContainerWidth();
     }
+
     mapObj();
+   
+    function setContainerWidth() {
+        let mapField;
+        if(viewPort == 1 ) {
+            mapField =   Math.floor(parseInt(document.querySelector('.map-field').style.width, 10) + 0.5);
+        }else {
+            mapField =   Math.floor(parseInt(document.querySelector('.map-field').style.height, 10) + 0.5);
+        }
+        let margin =  Math.floor(parseInt(window.getComputedStyle(document.querySelector('.map-field')).margin, 10) + 0.5);
+        document.querySelector('.map').style.width = `${(mapField * rowSize) + (rowSize * (margin *2))}px`;
+    }
+ 
     //Drag and drop 
     let cards = document.getElementsByClassName('card')
     for (const card of document.getElementsByClassName('card')) {
