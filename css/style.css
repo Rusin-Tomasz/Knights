@@ -16,41 +16,52 @@ label {
     cursor: pointer;
 }
 
+input {
+    border-radius: 10px;
+    padding: 0;
+    border: none;
+    padding: 0.4rem;
+}
+
+input:focus {
+    outline: none;
+}
+
 .human, .undead {
     display: inline-block;
     border: 2px solid black;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .human:hover, .undead:hover {
-    background-color:rgb(114, 85, 241);
+    background-color:rgba(106, 55, 113, 0.61);
 }
 
 .undead {
     background-image: url("../icons/undead/GrimReaperBlack.svg");
-    background-color:rgb(248, 248, 248);
+    background-color:rgba(228, 215, 196, 0.56);
     background-size: 70%;
 }
 
 .human {
     background-image: url("../icons/human/anime.svg");
-    background-color:rgb(248, 248, 248);
+    background-color:rgba(228, 215, 196, 0.56);
     background-size: 50%;
 }
 
 #p2-undead:checked + label,
 #p1-undead:checked + label {
     background-image: url("../icons/undead/reaper.svg");
-    background-color:rgb(114, 85, 241);
+    background-color:rgba(106, 55, 113, 0.61);
 }
 
 #p2-human:checked + label,
 #p1-human:checked + label {
     background-image: url("../icons/human/knight.svg");
-    background-color:rgb(114, 85, 241);
+    background-color:rgba(106, 55, 113, 0.61);
     background-size: 40%;
 }
 
@@ -64,24 +75,111 @@ label {
     justify-content: center;
     align-items: center;
     z-index: 2;
+    background-image: url("../img/dark-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.init-window form {
+.init-window .form-init {
     display: flex;
     flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: white;
 }
 
-.p1-options, 
-.p2-options {
+.form-init::before,
+.form-init::after {
+    content: "";
+    position: absolute;
     width: 50%;
+    height: 100%;
+    z-index: 1;
+}
+
+.form-init::before {
+    left: 0;
+    top: 0;
+    background-color: rgba(73, 7, 62, 0.2);
+}
+
+.form-init::after {
+ right: 0;
+ top: 0;
+ background-color: rgba(253, 155, 72, 0.08);
+}
+
+.player-wrapper {
+    width: 33%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-game,
+.tour-limit,
+.map-size-options,
+.player-wrapper,
+.options-wrapper,
+.start-game-wrapper {
+    z-index: 2;
 }
 .map-size-options {
     width: 100%;
+    text-align: center;
+}
+.options-inner {
+    padding: 2rem;
+    background-color: rgba(54, 13, 62, 0.9);
+}
+.sub-title {
+    font-weight: bold;
+    font-size: 21px;
+}
+.p1-options,
+.p2-options {
+    padding: 2rem;
+    background-color: rgba(0,0,0,0.7);
+}
+.p1-options label:first-child,
+.tour-limit label{
+    margin-top: 16px;
+    display: block;
+}
+.turn-limit-input,
+.player-name-input {
+    display: block;
+    margin-top: 16px;
+}
+.start-game-wrapper {
+    text-align: center;
+    width: 100%;
+}
+.options-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 33%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .start-game {
-    display: block;
-    margin-top: 20px;
+    display: inline-block;
+    background-color: rgba(54, 13, 62, 0.9);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 1rem;
+    transition: all 0.4s;
+}
+.start-game:hover {
+    background-color: rgba(228, 215, 196, 0.9);
+    color: black;
 }
 
 .container {
@@ -125,7 +223,6 @@ label {
     position: relative;
     border-radius: 50%;
 }
-
 
 .active {
     background: #732222;
@@ -280,6 +377,7 @@ label {
     left: 0;
     transform: translateY(-50%);
 }
+
 
 .next-turn {
    position: absolute;

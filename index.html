@@ -11,44 +11,54 @@
 
 <body>
     <div class="init-window">
-        <form action="">
-            <div class="p1-options">
-                <label>Podaj nazwę 1 gracza:
-                    <input class="player-name-input" type="text">
-                </label>
-                <p>Wybiersz rase:</p>
-                <input type="radio" id="p1-human" name="race-p1" value="human">
-                <label class="human" for="p1-human">Human</label>
-                <input type="radio" id="p1-undead" name="race-p1" value="undead">
-                <label class="undead" for="p1-undead">Undead</label>
+        <form class="form-init" action="">
+            <div class="player-wrapper">
+                <div class="p1-options">
+                    <label class="sub-title">Podaj nazwę 1 gracza:
+                        <input class="player-name-input" type="text">
+                    </label>
+                    <p class="sub-title">Wybiersz rase:</p>
+                    <input type="radio" id="p1-human" name="race-p1" value="human">
+                    <label class="human" for="p1-human"></label>
+                    <input type="radio" id="p1-undead" name="race-p1" value="undead">
+                    <label class="undead" for="p1-undead"></label>
+                </div>
             </div>
-            <div class="p2-options">
-                <label>Podaj nazwę 2 gracza:
-                    <input class="player-name-input" type="text">
-                </label>
-                <p>Wybiersz rase:</p>
-                <input type="radio" id="p2-human" name="race-p2" value="human">
-                <label class="human" for="p2-human">Human</label>
-                <input type="radio" id="p2-undead" name="race-p2" value="undead">
-                <label class="undead" for="p2-undead">Undead</label>
+            <div class="options-wrapper">
+                <div class="options-inner">
+                    <div class="map-size-options">
+                        <p class="sub-title">Wybierz rozmiar mapy:</p>
+                        <input type="radio" id="4x4" name="map" value="4">
+                        <label for="4x4">4x4</label>
+                        <input type="radio" id="5x5" name="map" value="5">
+                        <label for="5x5">5x5</label>
+                        <input type="radio" id="6x6" name="map" value="6">
+                        <label for="6x6">6x6</label>
+                        <input type="radio" id="7x7" name="map" value="7">
+                        <label for="7x7">7x7</label>
+                    </div>
+                    <div class="tour-limit">
+                        <label class="sub-title">Wprowadź limit tur:
+                            <input class="turn-limit-input" type="number">
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="map-size-options">
-                <p>Wybierz rozmiar mapy:</p>
-                <input type="radio" id="4x4" name="map" value="4">
-                <label for="4x4">4x4</label>
-                <input type="radio" id="5x5" name="map" value="5">
-                <label for="5x5">5x5</label>
-                <input type="radio" id="6x6" name="map" value="6">
-                <label for="6x6">6x6</label>
-                <input type="radio" id="7x7" name="map" value="7">
-                <label for="7x7">7x7</label>
+            <div class="player-wrapper">
+                <div class="p2-options">
+                    <label class="sub-title">Podaj nazwę 2 gracza:
+                        <input class="player-name-input" type="text">
+                    </label>
+                    <p class="sub-title">Wybiersz rase:</p>
+                    <input type="radio" id="p2-human" name="race-p2" value="human">
+                    <label class="human" for="p2-human"></label>
+                    <input type="radio" id="p2-undead" name="race-p2" value="undead">
+                    <label class="undead" for="p2-undead"></label>
+                </div>
             </div>
-            <div class="tour-limit">
-                <label>Wprowadź limit tur:
-                    <input class="turn-limit-input" type="number">
-                </label>
+            <div class="start-game-wrapper">
+                <input class="start-game" type="submit" value="Zaczynajmy!">
             </div>
-            <input class="start-game" type="submit" value="Zaczynajmy!">
         </form>
     </div>
     <div class="container">
@@ -85,10 +95,14 @@
         <div class="text-wrapper">
             <h3>Gra dobiegła końca</h3>
             <p class="player-win">Player 1 Wygrał</p>
-            <a href="file:///C:/Users/DELL/Desktop/github/knight-29-10-2018/index.html" class="restart-game">Zacznijmy jeszcze raz</a>
+            <a href="file:///C:/Users/DELL/Desktop/github/knight-29-10-2018/index.html" class="restart-game">Zacznijmy
+                jeszcze raz</a>
         </div>
     </div>
     <script src="js/main.js"></script>
 </body>
 
 </html>
+
+
+<!-- <a href="https://pl.freepik.com/darmowe-zdjecie/3d-render-streszczenie-planety-pokryte-martwych-drzew-w-scenie-kosmicznej_1024582.htm">Designed by Kjpargeter</a> -->
