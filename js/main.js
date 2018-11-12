@@ -30,7 +30,7 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
         viewPort = 2;
     }
 
-    document.querySelector('.counter').innerHTML = counter;
+    document.querySelector('.counter').innerHTML = `Pozostało tur: ${counter}`;
 
     [...playersName].forEach((element, index) => {
         let playersNameField = document.getElementsByClassName('player-name');
@@ -119,10 +119,9 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
                     document.querySelector(`.p${i+1}-cards`).appendChild(cart);
                 } else {
                     document.querySelector(`.p${i+1}-cards-holder`).appendChild(cart);
-                }
-                
-                
+                }        
             }
+            setHeightOfCard();
         }
 
         function cartObject() {
@@ -150,6 +149,16 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
         }
         cartObject();
     };
+
+    function setHeightOfCard() {
+        let container = document.querySelector('.player');
+        let currentHeightOfContainer = parseInt(window.getComputedStyle(container).height) * 0.9;
+        let cards = document.querySelectorAll('.card');
+        [...cards].forEach((element, index) => {
+            cards[index].style.height = currentHeightOfContainer + 'px' ;
+            cards[index].style.width = currentHeightOfContainer + 'px' ;
+        });
+    }
 
     function mapObj() {
         let currentHeight;
@@ -527,7 +536,7 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
         if(turnCounter < (turnLimit * 2 - 1)) {
             turnCounter ++;
             counter --;
-            document.querySelector('.counter').innerHTML = counter;
+            document.querySelector('.counter').innerHTML = `Pozostało tur: ${counter}`;
             endOfTurn();    
         } else {
             if( document.querySelectorAll(`.card-P2`).length > document.querySelectorAll(`.card-P1`).length) {
@@ -550,6 +559,5 @@ document.querySelector('.start-game').addEventListener('click', (e) => {
             }
         } 
     });
-    // init();
     endOfTurn();
 });

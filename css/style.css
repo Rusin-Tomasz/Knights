@@ -34,6 +34,7 @@ input:focus {
     width: 150px;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 10px;
 }
 
 .human:hover, .undead:hover {
@@ -134,6 +135,7 @@ input:focus {
 .options-inner {
     padding: 2rem;
     background-color: rgba(54, 13, 62, 0.9);
+    border-radius: 10px;
 }
 .sub-title {
     font-weight: bold;
@@ -200,7 +202,6 @@ input:focus {
     justify-content: space-between;
     position: relative;
     margin: auto;
-    opacity: 0.5;
 }
 
 .cards-wrapper  {
@@ -209,13 +210,15 @@ input:focus {
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
+    height: 100%;
+    align-items: center;
 }
 
 .card {
     width: 50px;
     height: 50px;
     border: 2px solid black;
-    margin: 5px;
+    margin: 0 5px;
     position: relative;  
     background-repeat: no-repeat;
     background-size: contain;
@@ -232,8 +235,17 @@ input:focus {
 .name-wrapper {
     width: 10%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
-
+.name-wrapper .player-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
 .map {
     height: 80%;
     width: 100%;
@@ -384,6 +396,23 @@ input:focus {
    right: 1%;
    top: 50%;
    transform: translateY(-50%);
+   border: none;
+   outline: none;
+   display: inline-block;
+   background-color: rgba(54, 13, 62, 0.9);
+   color: white;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 1px;
+   cursor: pointer;
+   padding: 1rem;
+   transition: all 0.4s;
+   border-radius: 10px;
+   z-index: 3;
+}
+.next-turn:hover {
+    background-color: rgba(228, 215, 196, 0.9);
+    color: black;
 }
 
 .hold {
@@ -416,15 +445,17 @@ input:focus {
 
 .info-box {
     position: absolute;
-    left: 30px;
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
 
 .info-box .counter {
     font-size: 16px;
     font-weight: bold;
     color: white;
+    text-align: center;
 }
 
 
@@ -445,6 +476,31 @@ input:focus {
     opacity: 0;
     transition: opacity 2s;
 }
+
+.end-game-info .text-wrapper h3 {
+    font-size: 32px;
+} 
+.end-game-info .text-wrapper p {
+    font-size: 22px;
+    font-weight: bold;
+} 
+.end-game-info .text-wrapper a {
+    display: inline-block;
+    background-color: rgba(54, 13, 62, 0.9);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 1rem;
+    transition: all 0.4s;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.end-game-info .text-wrapper a:hover {
+    background-color: rgba(228, 215, 196, 0.9);
+    color: black;
+} 
 
 /* Ikony kart */
 
